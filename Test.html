@@ -10,9 +10,17 @@
 
   <script>
     async function callBackend() {
-      const res = await fetch("https://825addba82bb.ngrok-free.app/");
-      const data = await res.json();
-      document.getElementById("response").innerText = data.message;
+      try {
+        const res = await fetch("https://af149bfa41fe.ngrok-free.app/api/test", {
+          headers: {
+            "ngrok-skip-browser-warning": "true"  // 👈 skips the ngrok warning page
+          }
+        });
+        const data = await res.json();
+        document.getElementById("response").innerText = data.message;
+      } catch (err) {
+        document.getElementById("response").innerText = "Error: " + err;
+      }
     }
   </script>
 </body>
