@@ -10,7 +10,7 @@
 
   <script>
     async function callBackend() {
-      const res = await fetch("https://YOUR_NGROK_URL/api/test");
+      const res = await fetch("https://825addba82bb.ngrok-free.app/");
       const data = await res.json();
       document.getElementById("response").innerText = data.message;
     }
