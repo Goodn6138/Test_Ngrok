@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Colab Backend Test</title>
+</head>
+<body>
+  <h1>Test Colab Backend</h1>
+  <button onclick="callBackend()">Ping Backend</button>
+  <p id="response"></p>
+
+  <script>
+    async function callBackend() {
+      const res = await fetch("https://YOUR_NGROK_URL/api/test");
+      const data = await res.json();
+      document.getElementById("response").innerText = data.message;
+    }
+  </script>
+</body>
+</html>
