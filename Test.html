@@ -6,16 +6,19 @@
 <body>
   <h1>Test Colab Backend</h1>
   <button onclick="callBackend()">Ping Backend</button>
-  <p id="response"></p>
+  <p id="response">Waiting...</p>
 
   <script>
     async function callBackend() {
       try {
         const res = await fetch("https://144af8e9c453.ngrok-free.app/api/test", {
           headers: {
-            "ngrok-skip-browser-warning": "true"  // 👈 skips the ngrok warning page
+            "ngrok-skip-browser-warning": "true"
           }
         });
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
         const data = await res.json();
         document.getElementById("response").innerText = data.message;
       } catch (err) {
